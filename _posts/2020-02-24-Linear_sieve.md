@@ -33,9 +33,9 @@ void era(int n)
 }
 ```
 
-시간복잡도는 어떻게 될까? $i$가 소수일 때 마다 $n/i$번 내부 반복문을 돌게 된다.
+시간복잡도는 어떻게 될까? $i$가 소수일 때 마다 $n \over i$번 내부 반복문을 돌게 된다.
 
-$O(\sum_{p < n} n/p) = O(n \log \log n)$임이 알려져 있고, 따라서 시간복잡도는 O(n \log \log n)이 된다.
+$O(\sum_{p < n} n\over p) = O(n \log \log n)$임이 알려져 있고, 따라서 시간복잡도는 $O(n \log \log n)$이 된다.
 
 ### 시간복잡도의 개선
 해봐야 크기 $n$짜리 배열을 채우는데 $O(n)$에 할 수는 없을까?
@@ -43,8 +43,11 @@ $O(\sum_{p < n} n/p) = O(n \log \log n)$임이 알려져 있고, 따라서 시�
 에라토스테네스의 체가 $O(n)$이 아닌 이유는, $2 \times 3 \times 5 \times 7$ 같은 수를 생각해 보자.
 
 > $2$가 소수이므로 $2$의 배수인 $2 \times (3 \times 5 \times 7)$은 합성수이다.
+
 > $3$가 소수이므로 $3$의 배수인 $3 \times (2 \times 5 \times 7)$은 합성수이다.
+
 > $5$가 소수이므로 $5$의 배수인 $5 \times (2 \times 3 \times 7)$은 합성수이다.
+
 > $7$가 소수이므로 $7$의 배수인 $7 \times (2 \times 3 \times 5)$은 합성수이다.
 
 이와 같이 소인수가 많은 합성수는 여러번 합성수라고 판별되고, 중복 판별 때문에 $O(n)$보다 느린 것이다.
@@ -166,7 +169,7 @@ $f(1) = 1$이고, $f(p)$는 보통 $O(1)$에 계산된다.
 
 물론 모든 함수가 $p$와 $i$만의 관계식으로 표현되지는 않는다. $\tau(n)$이나 $\sigma(n)$의 경우 $p$에 대한 지수에 의존한다. 이런 경우는 간단하게 그 지수 역시 구해주면 된다. $p \nmid i$ 이면 지수는 $e_n=1$이고, $p \mid i$ 이면 지수는 $e_n=e_i + 1$이다. 
 
-이렇게 구한 지수를 바탕으로 $p \mid i$일 때 $\tau(n) = \tau(i) \times (e_n + 1) \over e_n$, $\sigma(n) = \sigma(i) \times (p^{e_n + 1}-1) \over (p^{e_n}-1)$의 관계식을 이용해 계산해줄 수 있다. 다음은 $\phi(n), \mu(n), \tau(n), \sigma(n)$을 계산하는 코드이다.
+이렇게 구한 지수를 바탕으로 $p \mid i$일 때 $\tau(n) = \tau(i) \times {(e_n + 1) \over e_n}$, $\sigma(n) = \sigma(i) \times {(p^{e_n + 1}-1) \over (p^{e_n}-1)}$의 관계식을 이용해 계산해줄 수 있다. 다음은 $\phi(n), \mu(n), \tau(n), \sigma(n)$을 계산하는 코드이다.
 
 <details markdown="1">
 <summary>코드</summary>
