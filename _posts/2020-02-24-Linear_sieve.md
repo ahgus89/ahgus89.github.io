@@ -35,7 +35,7 @@ void era(int n)
 
 시간복잡도는 어떻게 될까? $i$가 소수일 때 마다 $n \over i$번 내부 반복문을 돌게 된다.
 
-$O(\sum_{p < n} n\over p) = O(n \log \log n)$임이 알려져 있고, 따라서 시간복잡도는 $O(n \log \log n)$이 된다.
+$O(\sum_{p < n} {n \over p}) = O(n \log \log n)$임이 알려져 있고, 따라서 시간복잡도는 $O(n \log \log n)$이 된다.
 
 ### 시간복잡도의 개선
 해봐야 크기 $n$짜리 배열을 채우는데 $O(n)$에 할 수는 없을까?
