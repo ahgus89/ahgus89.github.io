@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Linear-sieve"
-summary: "Linear-sieve"
+summary: "O(n)에 해결하자!"
 date:   2020-02-25 14:40:00
 categories: Algorithm
 tags: 'Number-Theory'
