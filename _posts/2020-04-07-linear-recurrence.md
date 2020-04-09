@@ -82,11 +82,11 @@ $$a({1 \over x}) = b({1 \over x}) q({1 \over x}) + r({1 \over x})$$
 
 양변을 다항식으로 만들어주기 위해 양변에 $x^n$을 곱해주면 다음과 같습니다.
 
-$$x^n a({1 \over x}) = x^m b({1 \over x}) \cdots x^{n-m} q({1 \over x}) + x^{m-1} r({1 \over x}) \cdots x^{n-m+1}$$
+$$x^n a({1 \over x}) = x^m b({1 \over x}) \cdot x^{n-m} q({1 \over x}) + x^{m-1} r({1 \over x}) \cdot x^{n-m+1}$$
 
 일반적으로, $n$차 다항식 $f(x)$에 대해 $x^n f({1 \over x})$는 $f(x)$의 계수 순서를 반대로 뒤집은 다항식이 됩니다. 이런 다항식을 대문자로 표시하면 다음과 같습니다.
 
-$$A(x) = B(x)Q(x) + R(x) \cdots x^{n-m+1}$$
+$$A(x) = B(x)Q(x) + R(x) \cdot x^{n-m+1}$$
 
 $R(x)$는 $n-m$차 다항식이므로, $mod \space x^{n-m+1}$ 상에서 계산해도 정확한 값을 얻을 수 있습니다.
 
@@ -98,7 +98,7 @@ $$A(x) \equiv B(x)Q(x) (mod \space x^{n-m+1})$$
 
 $mod \space x^{n-m+1}$ 상에서의 계산은 어려우니 $mod \space x$에서 시작해봅시다.
 
-$B(x) B^{-1} (x) \equiv 1 (mod \space x)$인 $B^{-1} (x)$은 어떤가요? $B(x)$의 상수항은 $b(x)$의 최고차항의 계수와 같으므로, 0이 아님이 분명합니다. 따라서 $B^{-1} (x) \equiv (B(x)의 \space 상수항)^-1 (mod \space x)$가 됩니다.
+$B(x) B^{-1} (x) \equiv 1 (mod \space x)$인 $B^{-1} (x)$은 어떤가요? $B(x)$의 상수항은 $b(x)$의 최고차항의 계수와 같으므로, 0이 아님이 분명합니다. 따라서 $B^{-1} (x) \equiv (B(x)의 \space 상수항)^{-1} (mod \space x)$가 됩니다.
 
 $B(x)C(x) \equiv 1 (mod \space x^k)$인 $C(x)$를 알고 있다고 가정합시다. 자명하게 다음이 성립합니다.
 
