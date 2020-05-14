@@ -2,7 +2,7 @@
 layout: post
 title:  "Möbius inversion"
 summary: "gcd 관련 합을 빠르게"
-date:   2020-05-15 12:40:00
+date:   2020-05-15 12:50:00
 categories: Algorithm
 tags: 'Number-Theory'
 author: ahgus89
@@ -19,42 +19,42 @@ author: ahgus89
 
 함수 $f(n), g(n)$에 대해 다음 식이 성립한다고 하자. 
 
-$$g(n) = \displaystyle \sum_{{d \vert n}} f(d)$$
+$$g(n) = \displaystyle \sum_{d \vert n} f(d)$$
 
 $g(n)$을 알고 있을 때 $f(n)$은 어떻게 구할까? $g(n)$이 $f(d)$들의 합이니 $g(d)$를 "적절히" 더하고 빼면 될텐데, 그 적절함을 담당하는 것이 Möbius inversion이다. $f(n)$은 다음과 같은 식으로 구할 수 있다.
 
-$$f(n) = \displaystyle \sum_{{d \vert n}} g(d) \mu({{n \over d}})$$
+$$f(n) = \displaystyle \sum_{d \vert n} g(d) \mu({n \over d})$$
 
 특히 다음 식이 성립한다.
 
-$$\displaystyle \sum_{{d \vert n}} \mu(d) = \epsilon(n)$$
+$$\displaystyle \sum_{d \vert n} \mu(d) = \epsilon(n)$$
 
 이 외에도 다음 식이 성립한다.
 
-$$\displaystyle \sum_{{d \vert n}} \tau(d)\mu({{n \over d}}) = 1$$
-$$\displaystyle \sum_{{d \vert n}} \sigma(d)\mu({{n \over d}}) = n$$
-$$\displaystyle \sum_{{d \vert n}} d\mu({{n \over d}}) = \phi(n)$$
+$$\displaystyle \sum_{d \vert n} \tau(d)\mu({n \over d}) = 1$$
+$$\displaystyle \sum_{d \vert n} \sigma(d)\mu({n \over d}) = n$$
+$$\displaystyle \sum_{d \vert n} d\mu({n \over d}) = \phi(n)$$
 
 증명은 양변이 곱셈함수임을 바탕으로 $p^k$꼴에 대해서만 식이 성립함을 보이는 것으로도 충분하다.
 
 ### gcd와 합
-$$f(n) = \displaystyle \sum_{{d \vert n}} g(d) \mu({{n \over d}})$$
+$$f(n) = \displaystyle \sum_{d \vert n} g(d) \mu({n \over d})$$
 
 이 식을 이용하면 다양한 $gcd$에 관한 합을 더 빠르게 계산할 수 있는 형태로 바꾸어 계산할 수 있다.
 
 다음 문제를 풀어봅시다. 
 
-> $1 \leq i \leq n, 1 \leq j \leq m, gcd(i, j)=1$인 $(i, j) 쌍의 개수는?
+> $1 \leq i \leq n, 1 \leq j \leq m, gcd(i, j)=1$인 $(i, j)$ 쌍의 개수는?
 
 우리가 구해야 하는 값을 합의 형태로 나타내면 다음과 같다.
 
 $$\displaystyle \sum_{i=1}^n \displaystyle \sum_{j=1}^m [gcd(i, j)=1]$$
 
-* [대괄호 표기](https://ahgus89.github.io/algorithm/Notation/)에 헷갈리지 않도록 주의하자 * 
+* [대괄호 표기](https://ahgus89.github.io/algorithm/Notation/)에 헷갈리지 않도록 주의하자.
 
 이 식을 naive하게 계산하면 $O(nm \log max(n, m))$ 정도가 걸린다. 더 빠르게 계산하는 법을 알아보자.
 
-$[gcd(i, j)=1] = \epsilon(gcd(i, j))$이고, $\displaystyle \sum_{{d \vert n}} \mu(d) = \epsilon(n)$를 대입하면 다음과 같다.
+$[gcd(i, j)=1] = \epsilon(gcd(i, j))$이고, $\displaystyle \sum_{d \vert n} \mu(d) = \epsilon(n)$를 대입하면 다음과 같다.
 
 $$\displaystyle \sum_{i=1}^n \displaystyle \sum_{j=1}^m \displaystyle \sum_{d \vert gcd(i, j)} \mu(d)$$
 
@@ -80,7 +80,7 @@ $$\displaystyle \sum_{d=1}^{min(n, m)} \mu(d){[{n \over d}]}{[{m \over d}]}$$
 
 [Linear sieve](https://ahgus89.github.io/algorithm/Linear_sieve/)를 이용하여 $\mu(d)$ 값을 미리 구하면 $O(min(n, m))$ 시간에 이 합을 구할 수 있다.
 
-$\mu(d)$의 부분합을 $O(min(n, m))$ 시간에 전처리해두면, [Harmonic Lemma](https://ahgus89.github.io/algorithm/Harmonic-Lemma/)를 이용해 전처리 이후 $n, m$이 주어질 때 마다 $O(\sqrt n + \sqrt m)$ 시간에 구할 수 있다. ${[{n \over i}]}, {[{m \over i}]}$ 값이 모두 같은 최대의 $j$는 $min([{n \over [n/i]}}], [{m \over [m/i]}}])$임을 쉽게 알 수 있다.
+$\mu(d)$의 부분합을 $O(min(n, m))$ 시간에 전처리해두면, [Harmonic Lemma](https://ahgus89.github.io/algorithm/Harmonic-Lemma/)를 이용해 전처리 이후 $n, m$이 주어질 때 마다 $O(\sqrt n + \sqrt m)$ 시간에 구할 수 있다. ${[{n \over i}]}, {[{m \over i}]}$ 값이 모두 같은 최대의 $j$는 $min([{n \over [n/i]}], [{m \over [m/i]}])$임을 쉽게 알 수 있다.
 
 이를 코드로 구현하면 다음과 같다.
 
@@ -157,7 +157,7 @@ $de=k$로 치환하고, $k$를 앞으로 꺼내어 식을 다시 쓰면 다음�
 
 $$\displaystyle \sum_{k=1}^{min(n, m)} [{n \over k}][{m \over k}] \displaystyle \sum_{d \vert k} f(d)\mu({k \over d})$$
 
-$g(n) = \displaystyle \sum_{d \vert n} f(d)\mu({k \over d})$은 $f(n)$의 Möbius inversion이다. $f(1), f(2), \ldots, f(n)$을 모두 구한 상황에서는(또는 $O(1)$에 값을 알 수 있는 경우는) $g(1), g(2), \cdots, g(n)$ 의 값을 $O(nlogn)$ 시간에 구해줄 수 있다. 간단하게 $d, e$를 기준으로 반복문을 돌며 $g(de)$의 값에 $f(d) \ldots \mu(e)$를 더해주면 된다.
+$g(n) = \displaystyle \sum_{d \vert n} f(d)\mu({k \over d})$은 $f(n)$의 Möbius inversion이다. $f(1), f(2), \ldots, f(n)$을 모두 구한 상황에서는(또는 $O(1)$에 값을 알 수 있는 경우는) $g(1), g(2), \cdots, g(n)$ 의 값을 $O(nlogn)$ 시간에 구해줄 수 있다. 간단하게 $d, e$를 기준으로 반복문을 돌며 $g(de)$의 값에 $f(d) \mu(e)$를 더해주면 된다.
 
 $f(n)$이 곱셈함수인 경우, 위 과정은 $O(n)$만에 할 수 있다. $f(n)$이 곱셈함수이면 Möbius inversion인 $g(n)$ 역시 곱셈함수이므로, $g({p^k})$꼴의 식만 구하면 Linear sieve를 이용해 구해줄 수 있다. 뫼비우스 함수의 성질을 생각하면, $g({p^k}) = f({p^k})-f({p^{k-1}})$임을 쉽게 알 수 있다.
 
@@ -165,7 +165,7 @@ $f(n)$이 곱셈함수인 경우, 위 과정은 $O(n)$만에 할 수 있다. $f(
 
 gcd에만 관한 함수가 아니더라도 그와 유사한 경우에 거의 같은 방법으로 식을 정리할 수 있는 경우도 있다. 최소공배수인 lcm이 그 예시이다. $\displaystyle \sum_{i=1}^n \displaystyle \sum_{j=1}^m lcm(i, j)$를 계산하고 글을 마치겠다. 계속해서 유사한 방식으로 식을 변형하니 이제는 이해하기 쉬울 것이다.
 
-$lcm(i, j) = ij \over gcd(i, j)$를 대입하고, 역시 합을 $gcd(i, j)=d$에 대해 구하는 것으로 생각하자.
+$lcm(i, j) = {ij \over gcd(i, j)}$를 대입하고, 역시 합을 $gcd(i, j)=d$에 대해 구하는 것으로 생각하자.
 
 $$\displaystyle \sum_{d=1}^{min(n, m)} \displaystyle \sum_{i=1}^n \displaystyle \sum_{j=1}^m {ij \over d}[gcd(i, j)=d]$$
 
