@@ -32,7 +32,9 @@ $$\displaystyle \sum_{d \vert n} \mu(d) = \epsilon(n)$$
 이 외에도 다음 식이 성립한다.
 
 $$\displaystyle \sum_{d \vert n} \tau(d)\mu({n \over d}) = 1$$
+
 $$\displaystyle \sum_{d \vert n} \sigma(d)\mu({n \over d}) = n$$
+
 $$\displaystyle \sum_{d \vert n} d\mu({n \over d}) = \phi(n)$$
 
 증명은 양변이 곱셈함수임을 바탕으로 $p^k$꼴에 대해서만 식이 성립함을 보이는 것으로도 충분하다.
