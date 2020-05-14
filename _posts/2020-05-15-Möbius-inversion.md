@@ -157,7 +157,7 @@ $de=k$로 치환하고, $k$를 앞으로 꺼내어 식을 다시 쓰면 다음�
 
 $$\displaystyle \sum_{k=1}^{min(n, m)} [{n \over k}][{m \over k}] \displaystyle \sum_{d \vert k} f(d)\mu({k \over d})$$
 
-$g(n) = \displaystyle \sum_{d \vert n} f(d)\mu({k \over d})$은 $f(n)$의 Möbius inversion이다. $f(1)$~$f(n)$을 모두 구한 상황에서는(또는 $O(1)$에 값을 알 수 있는 경우는) $g(1)$~$g(n)$ 의 값을 $O(nlogn)$ 시간에 구해줄 수 있다. 간단하게 $d, e$를 기준으로 반복문을 돌며 $g(de)$의 값에 $f(d) \cdots \mu(e)$를 더해주면 된다.
+$g(n) = \displaystyle \sum_{d \vert n} f(d)\mu({k \over d})$은 $f(n)$의 Möbius inversion이다. $f(1), f(2), \ldots, f(n)$을 모두 구한 상황에서는(또는 $O(1)$에 값을 알 수 있는 경우는) $g(1), g(2), \cdots, g(n)$ 의 값을 $O(nlogn)$ 시간에 구해줄 수 있다. 간단하게 $d, e$를 기준으로 반복문을 돌며 $g(de)$의 값에 $f(d) \ldots \mu(e)$를 더해주면 된다.
 
 $f(n)$이 곱셈함수인 경우, 위 과정은 $O(n)$만에 할 수 있다. $f(n)$이 곱셈함수이면 Möbius inversion인 $g(n)$ 역시 곱셈함수이므로, $g({p^k})$꼴의 식만 구하면 Linear sieve를 이용해 구해줄 수 있다. 뫼비우스 함수의 성질을 생각하면, $g({p^k}) = f({p^k})-f({p^{k-1}})$임을 쉽게 알 수 있다.
 
@@ -173,9 +173,9 @@ $i, j$가 $d$의 배수인 경우만 합을 구하면 다음과 같다.
 
 $$\displaystyle \sum_{d=1}^{min(n, m)} \displaystyle \sum_{i=1}^{[{n \over d}]} \displaystyle \sum_{j=1}^{[{m \over d}]} dij[gcd(i, j)=1]$$
 
-$d$는 $i, j$에 대한 상수이고, $i$는 $j$에 대한 상수이다. $[gcd(i, j)=1] = \displaystyle \sum_{{e \vert i}, {e \vert j}} \mu(e)$를 대입하면 다음과 같다.
+$d$는 $i, j$에 대한 상수이고, $i$는 $j$에 대한 상수이다. $[gcd(i, j)=1] = \displaystyle \sum_{e \vert i, e \vert j} \mu(e)$를 대입하면 다음과 같다.
 
-$$\displaystyle \sum_{d=1}^{min(n, m)} d \displaystyle \sum_{i=1}^{[{n \over d}]} i \displaystyle \sum_{j=1}^{[{m \over d}]} j \displaystyle \sum_{{e \vert i}, {e \vert j}} \mu(e)$$
+$$\displaystyle \sum_{d=1}^{min(n, m)} d \displaystyle \sum_{i=1}^{[{n \over d}]} i \displaystyle \sum_{j=1}^{[{m \over d}]} j \displaystyle \sum_{e \vert i, e \vert j} \mu(e)$$
 
 $i=ep, j=eq$를 대입하고 $e$에 대한 합을 앞으로 꺼내면 다음과 같다.
 
